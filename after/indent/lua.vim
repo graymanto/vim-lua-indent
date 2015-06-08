@@ -47,7 +47,11 @@ function s:IsBlockBegin(line)
   let line = s:FilterStrings(a:line)
 
   if line =~# '\m\v^.*\s*\=\s*function>.*'
-    return 1
+    if a:line =~# '\m\v^.*<end>.*'
+      return 0
+    else
+      return 1
+    end
   endif
 
   return 0
